@@ -1,42 +1,29 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import WeatherCard from './components/WeatherCard';
-import { WeatherContext } from './store/WeatherContext';
-import axios from 'axios';
-
+import LoadingSpinner from './components/LoadingSpinner';
 
 
 function App() {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
   const [weatherData, setWeatherdata] = useState({});
-  
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords);
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    });
-      getWeatherData(latitude, longitude);
-  },[])
-
-  const getWeatherData = function(latitude, longitude){
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=588a021975c1e569b550f8352fe723f5`).then((response) => {
-      console.log(response.data);
-      setWeatherdata(response.data)
+  
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=588a021975c1e569b550f8352fe723f5`).then((response) => {
+      return response.json()
+    }).then((data) => {
+      setWeatherdata(data);
+      setIsLoading(false);
     }).catch((err) => {
       console.log(err);
     });
-  }
-
-  
-
+    })
+  },[])
   return (
     <div className="App">
-    <WeatherContext.Provider value={{latitude, longitude, weatherData}}>
-    <WeatherCard />
-    </WeatherContext.Provider>
+    {isLoading ? <LoadingSpinner /> : <WeatherCard weatherData={weatherData} />}
     </div>
   );
 }
