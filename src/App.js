@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import WeatherCard from './components/WeatherCard';
 import { WeatherContext } from './store/WeatherContext';
+import axios from 'axios';
 
 
 
@@ -14,25 +15,27 @@ function App() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position.coords);
-      
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
     });
-  
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=588a021975c1e569b550f8352fe723f5`).then((response) => {
-    //   console.log("Response" + response);  
-    // return response.json();
-    // }).then((data) => {
-    //   console.log("data " + data);
-    //   setWeatherdata(data);
-    // }).catch((err) => {
-    //   console.log(err);
-    // });
-  })
+      getWeatherData(latitude, longitude);
+  },[])
+
+  const getWeatherData = function(latitude, longitude){
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=588a021975c1e569b550f8352fe723f5`).then((response) => {
+      console.log(response.data);
+      setWeatherdata(response.data)
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 
   
 
   return (
     <div className="App">
     <WeatherContext.Provider value={{latitude, longitude, weatherData}}>
+    <WeatherCard />
     </WeatherContext.Provider>
     </div>
   );
