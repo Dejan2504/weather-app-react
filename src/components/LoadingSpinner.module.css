@@ -1,3 +1,12 @@
+.background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(9,9,121);
+  background: linear-gradient(30deg, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+  width: 100vw;
+  height: 100vh;
+}
 
 @keyframes ticks {
   0% { opacity: 1 }

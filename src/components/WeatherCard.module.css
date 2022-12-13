@@ -1,0 +1,141 @@
+.cardDiv{
+    color: white;
+    width: 50vw;
+    height: 70vh;
+    padding: 2%;
+
+    /* Glass effect */
+background: rgba(255, 255, 255, 0.3);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+hr{
+    color: white;
+    width: 4vw;
+    background-color: #fff;
+}
+
+h1{
+    margin: 0;
+    font-size: 3vw;
+}
+
+.imgContainer img{
+    width: 13vw;
+    height: auto;
+}
+
+.temperature{
+    font-weight: bold;
+    font-size: 3vw;
+}
+
+.description{
+    padding: 1vw 0 2vw 0;
+    font-size: 1.2vw;
+}
+
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+    padding: 1.5vw 0 0 0 ;
+}
+
+.pressure svg{
+    width: 2vw;
+    height: 2vw;
+    fill: white;
+}
+
+.feelLike svg{
+    width: 2vw;
+    height: 2vw;
+    fill: white;
+}
+
+.humidity svg{
+    width: 2vw;
+    height: 2vw;
+}
+
+@media (min-width: 1200px){
+    
+}
+
+
+@media (max-width: 768px){
+    .cardDiv{
+        width: 80vw;
+        height: 80vh;
+    }
+    
+    hr{
+        color: white;
+        width: 50vw;
+        background-color: #fff;
+    }
+    
+    h1{
+        font-size: 10vw;
+    }
+    
+    .imgContainer img{
+        width: 30vw;
+        height: auto;
+    }
+    
+    .temperature{
+        font-size: 10vw;
+    }
+    
+    .description{
+        padding: 1vw 0 2vw 0;
+        font-size: 3vw;
+    }
+    
+    .bottom{
+        display: block;
+        font-size: 5vw;
+        padding: 5vw;
+    }
+
+    .pressure{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .pressure svg{
+        width: 8vw;
+        height: auto;
+        fill: white;
+    }
+
+    .feelLike{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .feelLike svg{
+        width: 8vw;
+        height: auto;
+        fill: white;
+    }
+
+    .humidity{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .humidity svg{
+        width: 8vw;
+        height: auto;
+    }
+}

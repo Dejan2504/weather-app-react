@@ -2,7 +2,8 @@ import classes from './LoadingSpinner.module.css';
 
 function LoadingSpinner(){
 
-    return(<div className={classes.spinner}>
+    return(<div className={classes.background}>
+        <div className={classes.spinner}>
         <div className={classes.ticks}>
     <div></div>
     <div></div>
@@ -16,6 +17,7 @@ function LoadingSpinner(){
     <div></div>
     <div></div>
     <div></div>
+    </div>
     </div>
     </div>);
 }

@@ -1,4 +1,11 @@
 .App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  background: rgb(9,9,121);
+  background: linear-gradient(30deg, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+  width: 100vw;
+  height: 100vh;
 }
 
